@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import countries from './countries.json';
+import { NavBar } from './components/Navbar';
+import { CountriesList } from './components/CountriesList';
+import { CountryDetails } from './components/CountryDetails';
+import { useState } from 'react';
 
 function App() {
+  const [index, setIndex] = useState();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar></NavBar>
+      <div>
+        {countries.map((currentCountrie) => {
+          return (
+            <CountriesList
+              onClick={() => setIndex(indexOf(EventTarget))} /*errado*/
+              alpha2Code={currentCountrie.alpha2Code}
+              nomeOficial={currentCountrie.name.official}
+              alpha3Code={currentCountrie.alpha3Code}
+            />
+          );
+        })}
+        {console.log(sigla)}
+        {index && <CountryDetails />}
+      </div>
     </div>
   );
 }
